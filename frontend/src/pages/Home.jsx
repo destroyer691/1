@@ -63,33 +63,46 @@ const Home = () => {
       <section className="product-section" style={{background: 'var(--bg-section)', padding: '4rem 0'}}>
         <div className="container">
           <h2 className="heading-2 text-center" style={{marginBottom: '3rem'}}>Hamara Product</h2>
-          <div className="product-showcase">
-            <div className="product-image-container">
-              <img 
-                src="https://images.unsplash.com/photo-1587733761376-3f26fc81d17f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHwxfHxjb21wb3N0fGVufDB8fHx8MTc2OTQyMzQ5OXww&ixlib=rb-4.1.0&q=85" 
-                alt="Organic fertilizer"
-                className="product-showcase-image"
-              />
-            </div>
-            <div className="product-details-container">
-              <h3 className="heading-2">{mockData.product.name}</h3>
-              <div className="product-price">
-                <span className="price-label">Price:</span>
-                <span className="price-value">₹{mockData.product.price}</span>
-                <span className="price-unit">per {mockData.product.quantity}</span>
+          <div className="product-showcase-home">
+            <div className="product-bag-container">
+              <div className="product-bag-card">
+                <div className="bag-image-wrapper">
+                  <img 
+                    src="https://images.pexels.com/photos/5503338/pexels-photo-5503338.jpeg" 
+                    alt="50kg Organic Khad Bag"
+                    className="bag-image"
+                  />
+                </div>
+                <div className="bag-details">
+                  <h3 className="heading-3">{mockData.product.name}</h3>
+                  <div className="bag-quantity">
+                    <Leaf className="w-5 h-5" style={{color: 'var(--accent-text)'}} />
+                    <span className="body-medium">{mockData.product.quantity}</span>
+                  </div>
+                  <div className="bag-price-box">
+                    <div className="bag-price-row">
+                      <span className="price-label">Price per bag:</span>
+                      <span className="price-amount">₹{mockData.product.price}</span>
+                    </div>
+                    <p className="caption" style={{margin: '0.5rem 0 0', textAlign: 'center'}}>100% Natural & Chemical-Free</p>
+                  </div>
+                  <Link to="/order" className="btn-primary" style={{width: '100%'}}>
+                    Order Now
+                  </Link>
+                </div>
               </div>
-              <p className="body-large" style={{margin: '1.5rem 0'}}>{mockData.product.description}</p>
-              <ul className="product-features">
+            </div>
+            <div className="product-info-container">
+              <p className="body-large" style={{marginBottom: '1.5rem'}}>{mockData.product.description}</p>
+              <h4 className="product-card-title" style={{marginBottom: '1rem'}}>Key Features:</h4>
+              <ul className="product-features-list">
                 {mockData.product.features.map((feature, index) => (
-                  <li key={index} className="feature-item">
+                  <li key={index} className="feature-list-item">
                     <Leaf className="w-5 h-5" style={{color: 'var(--accent-text)', flexShrink: 0}} />
                     <span>{feature}</span>
                   </li>
                 ))}
               </ul>
-              <Link to="/order" className="btn-primary" style={{marginTop: '2rem'}}>
-                Order Now
-              </Link>
             </div>
           </div>
         </div>
