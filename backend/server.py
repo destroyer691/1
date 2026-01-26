@@ -183,7 +183,7 @@ async def create_review(review_input: ReviewCreate):
         review_dict = review_input.dict()
         review_obj = Review(**review_dict)
         
-        result = await db.reviews.insert_one(review_obj.dict())
+        await db.reviews.insert_one(review_obj.dict())
         
         return {
             "success": True,
