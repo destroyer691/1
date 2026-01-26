@@ -119,7 +119,7 @@ async def create_order(order_input: OrderCreate):
         order_dict = order_input.dict()
         order_obj = Order(**order_dict, total_amount=total_amount)
         
-        result = await db.orders.insert_one(order_obj.dict())
+        await db.orders.insert_one(order_obj.dict())
         
         return {
             "success": True,
