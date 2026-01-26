@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import { ShoppingBag, Package, IndianRupee, Phone, MapPin, User } from 'lucide-react';
-import { mockData } from '../mock';
+import axios from 'axios';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
 import { toast } from 'sonner';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
+
+const PRICE_PER_BAG = 599;
+const PRODUCT_NAME = 'Malva Organic Khad';
+const PRODUCT_QUANTITY = '50kg';
 
 const Order = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +21,7 @@ const Order = () => {
     quantity: 1,
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,7 +31,7 @@ const Order = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Validation
@@ -32,26 +40,42 @@ const Order = () => {
       return;
     }
 
-    if (formData.mobile.length !== 10) {
-      toast.error('Mobile number should be 10 digits');
+    if (formData.mobile.length !== 10 || !formData.mobile.match(/^[0-9]+$/)) {
+      toast.error('Mobile number must be 10 digits');
       return;
     }
 
-    // Mock submission
-    console.log('Order submitted:', formData);
-    toast.success('Order placed successfully! We will contact you soon.');
-    
-    // Reset form
-    setFormData({
-      name: '',
-      mobile: '',
-      address: '',
-      quantity: 1,
-      message: ''
-    });
+    if (formData.quantity < 1 || formData.quantity > 100) {
+      toast.error('Quantity must be between 1 and 100');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await axios.post(`${API}/orders`, formData);
+      
+      if (response.data.success) {
+        toast.success(response.data.message);
+        
+        // Reset form
+        setFormData({
+          name: '',
+          mobile: '',
+          address: '',
+          quantity: 1,
+          message: ''
+        });
+      }
+    } catch (error) {
+      console.error('Error submitting order:', error);
+      toast.error(error.response?.data?.detail || 'Failed to place order. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const totalPrice = mockData.product.price * formData.quantity;
+  const totalPrice = PRICE_PER_BAG * formData.quantity;
 
   return (
     <div className="order-page">
@@ -75,19 +99,19 @@ const Order = () => {
               <h3 className="heading-3" style={{marginBottom: '1.5rem'}}>Product Details</h3>
               <div className="product-summary-content">
                 <img 
-                  src="https://images.unsplash.com/photo-1492496913980-501348b61469?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHwyfHxjb21wb3N0fGVufDB8fHx8MTc2OTQyMzQ5OXww&ixlib=rb-4.1.0&q=85" 
+                  src="https://images.pexels.com/photos/5503338/pexels-photo-5503338.jpeg" 
                   alt="Product"
                   className="summary-product-image"
                 />
                 <div>
-                  <h4 className="product-card-title">{mockData.product.name}</h4>
+                  <h4 className="product-card-title">{PRODUCT_NAME}</h4>
                   <div className="summary-detail">
                     <Package className="w-5 h-5" />
-                    <span>{mockData.product.quantity}</span>
+                    <span>{PRODUCT_QUANTITY} Bag</span>
                   </div>
                   <div className="summary-detail">
                     <IndianRupee className="w-5 h-5" />
-                    <span>₹{mockData.product.price} per bag</span>
+                    <span>₹{PRICE_PER_BAG} per bag</span>
                   </div>
                 </div>
               </div>
@@ -100,7 +124,7 @@ const Order = () => {
                 </div>
                 <div className="price-row">
                   <span>Price per bag:</span>
-                  <span>₹{mockData.product.price}</span>
+                  <span>₹{PRICE_PER_BAG}</span>
                 </div>
                 <div className="price-row price-total">
                   <span>Total Amount:</span>
@@ -125,6 +149,7 @@ const Order = () => {
                     onChange={handleChange}
                     placeholder="Apna naam enter karein"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -142,6 +167,7 @@ const Order = () => {
                     maxLength={10}
                     pattern="[0-9]{10}"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -157,6 +183,7 @@ const Order = () => {
                     placeholder="Complete address with pincode"
                     rows={3}
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -173,6 +200,7 @@ const Order = () => {
                     min="1"
                     max="100"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -186,11 +214,17 @@ const Order = () => {
                     onChange={handleChange}
                     placeholder="Koi special instructions ya queries"
                     rows={3}
+                    disabled={isSubmitting}
                   />
                 </div>
 
-                <Button type="submit" className="btn-primary" style={{width: '100%', marginTop: '1rem'}}>
-                  Place Order - ₹{totalPrice}
+                <Button 
+                  type="submit" 
+                  className="btn-primary" 
+                  style={{width: '100%', marginTop: '1rem'}}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Placing Order...' : `Place Order - ₹${totalPrice}`}
                 </Button>
               </form>
             </div>
