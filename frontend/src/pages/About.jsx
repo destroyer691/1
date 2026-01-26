@@ -1,6 +1,21 @@
 import React from 'react';
 import { Leaf, Heart, Target, Users } from 'lucide-react';
-import { mockData } from '../mock';
+
+const aboutData = {
+  story: 'Malva Organic ki shuruaat ek simple vishwaas se hui - prakriti ke paas har samasya ka natural solution hai. Hum gae ke gobar ko use karke 100% organic khad banate hain jo mitti, fasalon aur kisano sabke liye faydemand hai.',
+  vision: 'Har khet mein chemical-free kheti, har mitti mein natural shakti, aur har kisan ko sustainable aur profitable farming.',
+  mission: 'Kisano ko high-quality organic fertilizer provide karna jo affordable ho, effective ho, aur environment ke liye safe ho.',
+  whyCowDung: [
+    '100% natural aur chemical-free organic matter',
+    'Nitrogen, Phosphorus, Potassium jaise essential nutrients naturally present',
+    'Beneficial microorganisms jo mitti ki health improve karte hain',
+    'Water retention capacity badhata hai',
+    'Soil structure improve karta hai',
+    'Long-lasting effects, baar baar chemical fertilizer ki zarurat nahi',
+    'Prakriti aur environment ke liye completely safe',
+    'Cost-effective solution for sustainable farming'
+  ]
+};
 
 const About = () => {
   return (
@@ -29,7 +44,7 @@ const About = () => {
             <div className="story-content">
               <h2 className="heading-2">Malva Organic Ki Kahaani</h2>
               <p className="body-large" style={{margin: '1.5rem 0'}}>
-                {mockData.about.story}
+                {aboutData.story}
               </p>
               <p className="body-medium" style={{color: 'var(--text-secondary)'}}>
                 Hum vishwaas karte hain ki prakriti ke paas har samasya ka samadhan hai. 
@@ -48,12 +63,12 @@ const About = () => {
             <div className="product-card">
               <Target className="w-10 h-10" style={{color: 'var(--accent-text)', marginBottom: '1rem'}} />
               <h3 className="product-card-title">Hamara Vision</h3>
-              <p className="product-card-description">{mockData.about.vision}</p>
+              <p className="product-card-description">{aboutData.vision}</p>
             </div>
             <div className="product-card">
               <Heart className="w-10 h-10" style={{color: 'var(--accent-text)', marginBottom: '1rem'}} />
               <h3 className="product-card-title">Hamara Mission</h3>
-              <p className="product-card-description">{mockData.about.mission}</p>
+              <p className="product-card-description">{aboutData.mission}</p>
             </div>
           </div>
         </div>
@@ -73,7 +88,7 @@ const About = () => {
             </div>
             <div className="why-content">
               <ul className="why-list">
-                {mockData.about.whyCowDung.map((reason, index) => (
+                {aboutData.whyCowDung.map((reason, index) => (
                   <li key={index} className="why-item">
                     <Leaf className="w-6 h-6" style={{color: 'var(--accent-text)', flexShrink: 0}} />
                     <span className="body-medium">{reason}</span>
