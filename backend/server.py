@@ -147,7 +147,7 @@ async def create_contact(contact_input: ContactCreate):
         contact_dict = contact_input.dict()
         contact_obj = Contact(**contact_dict)
         
-        result = await db.contacts.insert_one(contact_obj.dict())
+        await db.contacts.insert_one(contact_obj.dict())
         
         return {
             "success": True,
