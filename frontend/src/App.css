@@ -473,6 +473,125 @@ body {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
+/* Product Bag Card - New Professional Design */
+.product-showcase-home {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 3rem;
+  align-items: start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.product-bag-container {
+  width: 100%;
+}
+
+.product-bag-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.product-bag-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.bag-image-wrapper {
+  width: 100%;
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  background: var(--bg-section);
+}
+
+.bag-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-bag-card:hover .bag-image {
+  transform: scale(1.05);
+}
+
+.bag-details {
+  text-align: center;
+}
+
+.bag-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.75rem 0;
+  padding: 0.5rem 1rem;
+  background: var(--accent-wash);
+  border-radius: 9999px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bag-price-box {
+  background: linear-gradient(135deg, var(--accent-wash) 0%, rgba(148, 242, 127, 0.2) 100%);
+  border: 2px solid var(--accent-primary);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.bag-price-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.price-amount {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--accent-text);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.product-info-container {
+  padding: 1rem 0;
+}
+
+.product-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.feature-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.feature-list-item:hover {
+  background: var(--accent-wash);
+  border-color: var(--accent-primary);
+  transform: translateX(4px);
+}
+
 .product-details-container {
   padding: 1rem;
 }
