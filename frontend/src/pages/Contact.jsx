@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MessageSquare, User } from 'lucide-react';
+import axios from 'axios';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
 import { toast } from 'sonner';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +16,7 @@ const Contact = () => {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +26,7 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Validation
@@ -30,22 +35,33 @@ const Contact = () => {
       return;
     }
 
-    if (formData.mobile.length !== 10) {
-      toast.error('Mobile number should be 10 digits');
+    if (formData.mobile.length !== 10 || !formData.mobile.match(/^[0-9]+$/)) {
+      toast.error('Mobile number must be 10 digits');
       return;
     }
 
-    // Mock submission
-    console.log('Contact form submitted:', formData);
-    toast.success('Message sent successfully! We will contact you soon.');
-    
-    // Reset form
-    setFormData({
-      name: '',
-      mobile: '',
-      email: '',
-      message: ''
-    });
+    setIsSubmitting(true);
+
+    try {
+      const response = await axios.post(`${API}/contacts`, formData);
+      
+      if (response.data.success) {
+        toast.success(response.data.message);
+        
+        // Reset form
+        setFormData({
+          name: '',
+          mobile: '',
+          email: '',
+          message: ''
+        });
+      }
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      toast.error(error.response?.data?.detail || 'Failed to send message. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -123,6 +139,7 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Apna naam enter karein"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -140,6 +157,7 @@ const Contact = () => {
                     maxLength={10}
                     pattern="[0-9]{10}"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -154,6 +172,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="your.email@example.com"
+                    disabled={isSubmitting}
                   />
                 </div>
 
@@ -169,11 +188,17 @@ const Contact = () => {
                     placeholder="Apna message yahan likhein..."
                     rows={5}
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
 
-                <Button type="submit" className="btn-primary" style={{width: '100%', marginTop: '1rem'}}>
-                  Send Message
+                <Button 
+                  type="submit" 
+                  className="btn-primary" 
+                  style={{width: '100%', marginTop: '1rem'}}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </form>
             </div>
