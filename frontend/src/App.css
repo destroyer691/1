@@ -1032,6 +1032,7 @@ body {
   }
 
   .product-showcase,
+  .product-showcase-home,
   .story-grid,
   .why-grid {
     grid-template-columns: 1fr;
@@ -1042,6 +1043,10 @@ body {
   .story-main-image,
   .why-main-image {
     height: 250px;
+  }
+
+  .bag-image-wrapper {
+    height: 280px;
   }
 
   .order-grid,
