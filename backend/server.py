@@ -1,14 +1,14 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, HTTPException
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import logging
 from pathlib import Path
-from pydantic import BaseModel, Field, ConfigDict
-from typing import List
+from pydantic import BaseModel, Field, validator
+from typing import List, Optional
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime
 
 
 ROOT_DIR = Path(__file__).parent
@@ -26,45 +26,174 @@ app = FastAPI()
 api_router = APIRouter(prefix="/api")
 
 
-# Define Models
-class StatusCheck(BaseModel):
-    model_config = ConfigDict(extra="ignore")  # Ignore MongoDB's _id field
-    
+# ========== MODELS ==========
+
+# Order Models
+class OrderCreate(BaseModel):
+    name: str
+    mobile: str
+    address: str
+    quantity: int
+    message: Optional[str] = ""
+
+    @validator('mobile')
+    def validate_mobile(cls, v):
+        if not v.isdigit() or len(v) != 10:
+            raise ValueError('Mobile number must be 10 digits')
+        return v
+
+    @validator('quantity')
+    def validate_quantity(cls, v):
+        if v < 1 or v > 100:
+            raise ValueError('Quantity must be between 1 and 100')
+        return v
+
+class Order(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
-    client_name: str
-    timestamp: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    name: str
+    mobile: str
+    address: str
+    quantity: int
+    message: str = ""
+    total_amount: int
+    status: str = "pending"
+    created_at: datetime = Field(default_factory=datetime.utcnow)
 
-class StatusCheckCreate(BaseModel):
-    client_name: str
+# Contact Models
+class ContactCreate(BaseModel):
+    name: str
+    mobile: str
+    email: Optional[str] = ""
+    message: str
 
-# Add your routes to the router instead of directly to app
+    @validator('mobile')
+    def validate_mobile(cls, v):
+        if not v.isdigit() or len(v) != 10:
+            raise ValueError('Mobile number must be 10 digits')
+        return v
+
+class Contact(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    mobile: str
+    email: str = ""
+    message: str
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+# Review Models
+class ReviewCreate(BaseModel):
+    name: str
+    location: str
+    rating: int
+    comment: str
+
+    @validator('rating')
+    def validate_rating(cls, v):
+        if v < 1 or v > 5:
+            raise ValueError('Rating must be between 1 and 5')
+        return v
+
+class Review(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    name: str
+    location: str
+    rating: int
+    comment: str
+    created_at: datetime = Field(default_factory=datetime.utcnow)
+
+
+# ========== ROUTES ==========
+
 @api_router.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Malva Organic API"}
 
-@api_router.post("/status", response_model=StatusCheck)
-async def create_status_check(input: StatusCheckCreate):
-    status_dict = input.model_dump()
-    status_obj = StatusCheck(**status_dict)
-    
-    # Convert to dict and serialize datetime to ISO string for MongoDB
-    doc = status_obj.model_dump()
-    doc['timestamp'] = doc['timestamp'].isoformat()
-    
-    _ = await db.status_checks.insert_one(doc)
-    return status_obj
+# Orders Endpoints
+@api_router.post("/orders", response_model=dict)
+async def create_order(order_input: OrderCreate):
+    try:
+        # Calculate total amount (₹599 per 50kg bag)
+        PRICE_PER_BAG = 599
+        total_amount = PRICE_PER_BAG * order_input.quantity
+        
+        order_dict = order_input.dict()
+        order_obj = Order(**order_dict, total_amount=total_amount)
+        
+        result = await db.orders.insert_one(order_obj.dict())
+        
+        return {
+            "success": True,
+            "order_id": order_obj.id,
+            "message": "Order placed successfully! We will contact you soon.",
+            "total_amount": total_amount
+        }
+    except Exception as e:
+        logger.error(f"Error creating order: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
-@api_router.get("/status", response_model=List[StatusCheck])
-async def get_status_checks():
-    # Exclude MongoDB's _id field from the query results
-    status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(1000)
-    
-    # Convert ISO string timestamps back to datetime objects
-    for check in status_checks:
-        if isinstance(check['timestamp'], str):
-            check['timestamp'] = datetime.fromisoformat(check['timestamp'])
-    
-    return status_checks
+@api_router.get("/orders", response_model=List[Order])
+async def get_orders():
+    try:
+        orders = await db.orders.find().sort("created_at", -1).to_list(1000)
+        return [Order(**order) for order in orders]
+    except Exception as e:
+        logger.error(f"Error fetching orders: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+# Contact Endpoints
+@api_router.post("/contacts", response_model=dict)
+async def create_contact(contact_input: ContactCreate):
+    try:
+        contact_dict = contact_input.dict()
+        contact_obj = Contact(**contact_dict)
+        
+        result = await db.contacts.insert_one(contact_obj.dict())
+        
+        return {
+            "success": True,
+            "contact_id": contact_obj.id,
+            "message": "Message sent successfully! We will contact you soon."
+        }
+    except Exception as e:
+        logger.error(f"Error creating contact: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@api_router.get("/contacts", response_model=List[Contact])
+async def get_contacts():
+    try:
+        contacts = await db.contacts.find().sort("created_at", -1).to_list(1000)
+        return [Contact(**contact) for contact in contacts]
+    except Exception as e:
+        logger.error(f"Error fetching contacts: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+# Reviews Endpoints
+@api_router.get("/reviews", response_model=List[Review])
+async def get_reviews():
+    try:
+        reviews = await db.reviews.find().sort("created_at", -1).to_list(100)
+        return [Review(**review) for review in reviews]
+    except Exception as e:
+        logger.error(f"Error fetching reviews: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+@api_router.post("/reviews", response_model=dict)
+async def create_review(review_input: ReviewCreate):
+    try:
+        review_dict = review_input.dict()
+        review_obj = Review(**review_dict)
+        
+        result = await db.reviews.insert_one(review_obj.dict())
+        
+        return {
+            "success": True,
+            "review_id": review_obj.id,
+            "message": "Review added successfully!"
+        }
+    except Exception as e:
+        logger.error(f"Error creating review: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 # Include the router in the main app
 app.include_router(api_router)
@@ -72,7 +201,7 @@ app.include_router(api_router)
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
