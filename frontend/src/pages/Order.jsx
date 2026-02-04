@@ -36,17 +36,17 @@ const Order = () => {
     
     // Validation
     if (!formData.name || !formData.mobile || !formData.address || !formData.quantity) {
-      toast.error('Please fill all required fields');
+      toast.error(language === 'hi' ? 'कृपया सभी आवश्यक फील्ड भरें' : 'Please fill all required fields');
       return;
     }
 
     if (formData.mobile.length !== 10 || !formData.mobile.match(/^[0-9]+$/)) {
-      toast.error('Mobile number must be 10 digits');
+      toast.error(language === 'hi' ? 'मोबाइल नंबर 10 अंकों का होना चाहिए' : 'Mobile number must be 10 digits');
       return;
     }
 
     if (formData.quantity < 1 || formData.quantity > 100) {
-      toast.error('Quantity must be between 1 and 100');
+      toast.error(language === 'hi' ? 'मात्रा 1 से 100 के बीच होनी चाहिए' : 'Quantity must be between 1 and 100');
       return;
     }
 
