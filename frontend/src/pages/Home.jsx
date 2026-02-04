@@ -9,8 +9,8 @@ const API = `${BACKEND_URL}/api`;
 // Static data for benefits and product
 const productData = {
   name: 'Malva Organic Khad',
-  quantity: '50kg Bag',
-  price: 599,
+  quantity: '40kg Bag',
+  price: 500,
   description: 'Gae ke gobar se bana 100% natural organic fertilizer. Chemical-free, soil-friendly, aur fasalon ke liye perfect nutrition.',
   features: [
     'Gae ke gobar se bana 100% organic',
