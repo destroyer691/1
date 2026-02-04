@@ -36,34 +36,37 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--bg-page);
+  background: linear-gradient(to bottom, #ffffff 0%, #f8fdf6 50%, #f0fae8 100%);
   color: var(--text-body);
+  min-height: 100vh;
 }
 
 .heading-1 {
   font-family: system-ui, sans-serif;
-  font-weight: 700;
-  font-size: clamp(2.25rem, 5vw, 4.5rem);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  font-size: clamp(2.75rem, 6vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   color: var(--text-primary);
+  text-align: center;
 }
 
 .heading-2 {
   font-family: system-ui, sans-serif;
-  font-weight: 600;
-  font-size: clamp(1.875rem, 4vw, 3rem);
-  line-height: 1.2;
-  letter-spacing: -0.015em;
+  font-weight: 700;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
+  text-align: center;
 }
 
 .heading-3 {
   font-family: system-ui, sans-serif;
   font-weight: 600;
-  font-size: clamp(1.25rem, 3vw, 1.5rem);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  line-height: 1.25;
+  letter-spacing: -0.015em;
   color: var(--text-primary);
 }
 
