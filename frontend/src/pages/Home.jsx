@@ -108,8 +108,8 @@ const Home = () => {
               <div className="product-bag-card">
                 <div className="bag-image-wrapper">
                   <img 
-                    src="https://images.pexels.com/photos/5503338/pexels-photo-5503338.jpeg" 
-                    alt="40kg Organic Khad Bag"
+                    src="https://customer-assets.emergentagent.com/job_natural-khad/artifacts/1ruocoxd_WhatsApp%20Image%202026-02-04%20at%201.09.23%20PM.jpeg" 
+                    alt="Malva Organic 40kg Bag - Vermi Compost"
                     className="bag-image"
                   />
                 </div>
