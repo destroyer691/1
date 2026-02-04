@@ -244,6 +244,51 @@ body {
   gap: 0.5rem;
 }
 
+.language-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--accent-wash);
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-text);
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.language-toggle:hover {
+  background: var(--accent-primary);
+  color: white;
+  transform: scale(1.05);
+}
+
+.mobile-language-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--accent-wash);
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-text);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.mobile-language-toggle:hover {
+  background: var(--accent-primary);
+  color: white;
+}
+
 .nav-link {
   color: var(--text-muted);
   text-decoration: none;
