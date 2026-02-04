@@ -692,9 +692,15 @@ body {
 
 /* ========== PAGE HERO ========== */
 .page-hero {
-  padding: 8rem 1.5rem 3rem;
-  background: var(--gradient-hero);
+  padding: 9rem 1.5rem 4rem;
+  background: radial-gradient(ellipse at top, #e8f9dd 0%, #f0fae8 50%, #f8fdf6 100%);
   text-align: center;
+  border-bottom: 2px solid rgba(143, 236, 120, 0.2);
+}
+
+.page-hero .hero-subtitle {
+  font-size: clamp(1.125rem, 2.5vw, 1.35rem);
+  font-weight: 500;
 }
 
 /* ========== FOOTER ========== */
