@@ -95,7 +95,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="body-small" style={{fontWeight: 600, marginBottom: '0.25rem'}}>Phone / WhatsApp</h4>
-                    <a href="tel:7067553166" className="link-text">7067553166</a>
+                    <a href="tel:9575248908" className="link-text">9575248908</a>
                   </div>
                 </div>
 
@@ -105,7 +105,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="body-small" style={{fontWeight: 600, marginBottom: '0.25rem'}}>Email</h4>
-                    <a href="mailto:info@malvaorganic.com" className="link-text">info@malvaorganic.com</a>
+                    <a href="mailto:arvindpatidar110@gmail.com" className="link-text">arvindpatidar110@gmail.com</a>
                   </div>
                 </div>
               </div>
