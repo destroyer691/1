@@ -851,6 +851,7 @@ body {
   gap: 0.5rem;
   color: var(--text-secondary);
   font-size: 0.875rem;
+  transition: all 0.2s ease;
 }
 
 .footer-contact-item a {
@@ -861,6 +862,33 @@ body {
 
 .footer-contact-item a:hover {
   color: var(--accent-text);
+}
+
+/* Footer Location Clickable */
+.footer-location-clickable {
+  padding: 0.5rem;
+  margin: -0.5rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.footer-location-clickable:hover {
+  background: rgba(143, 236, 120, 0.15);
+  transform: translateX(4px);
+}
+
+.footer-location-clickable:hover svg {
+  color: var(--accent-strong);
+}
+
+.footer-location-clickable span {
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.footer-location-clickable:hover span {
+  color: var(--accent-text);
+  font-weight: 500;
 }
 
 .footer-bottom {
