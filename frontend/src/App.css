@@ -1013,6 +1013,58 @@ body {
   justify-content: center;
   color: var(--accent-text);
   flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+/* Clickable Location Styling */
+.location-clickable {
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin: -0.75rem;
+}
+
+.location-clickable:hover {
+  background: var(--accent-wash);
+  transform: translateX(4px);
+}
+
+.location-clickable:active {
+  transform: translateX(2px);
+}
+
+.location-icon-animated {
+  animation: pulse-location 2s infinite;
+}
+
+@keyframes pulse-location {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(143, 236, 120, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 8px rgba(143, 236, 120, 0);
+  }
+}
+
+.location-text {
+  text-decoration: underline;
+  text-decoration-color: var(--accent-primary);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+}
+
+.location-clickable:hover .location-text {
+  text-decoration-thickness: 2px;
+  color: var(--accent-strong);
+}
+
+.location-clickable:hover .location-icon-animated {
+  background: var(--accent-primary);
+  color: white;
+  transform: scale(1.1);
 }
 
 .why-choose-box {
