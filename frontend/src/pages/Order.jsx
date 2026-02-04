@@ -122,15 +122,15 @@ const Order = () => {
               {/* Price Calculation */}
               <div className="price-summary">
                 <div className="price-row">
-                  <span>Quantity:</span>
-                  <span>{formData.quantity} bag(s)</span>
+                  <span>{t('quantity')}</span>
+                  <span>{formData.quantity} {t('bags')}</span>
                 </div>
                 <div className="price-row">
-                  <span>Price per bag:</span>
+                  <span>{t('pricePerBag2')}</span>
                   <span>₹{PRICE_PER_BAG}</span>
                 </div>
                 <div className="price-row price-total">
-                  <span>Total Amount:</span>
+                  <span>{t('totalAmount')}:</span>
                   <span>₹{totalPrice}</span>
                 </div>
               </div>
