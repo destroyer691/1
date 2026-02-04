@@ -193,7 +193,7 @@ const Order = () => {
                 <div className="form-group">
                   <label className="form-label">
                     <Package className="w-4 h-4" />
-                    <span>Quantity (Number of 50kg Bags) *</span>
+                    <span>{t('quantityLabel')} *</span>
                   </label>
                   <Input
                     type="number"
