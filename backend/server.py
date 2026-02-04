@@ -112,8 +112,8 @@ async def root():
 @api_router.post("/orders", response_model=dict)
 async def create_order(order_input: OrderCreate):
     try:
-        # Calculate total amount (₹599 per 50kg bag)
-        PRICE_PER_BAG = 599
+        # Calculate total amount (₹500 per 40kg bag)
+        PRICE_PER_BAG = 500
         total_amount = PRICE_PER_BAG * order_input.quantity
         
         order_dict = order_input.dict()
