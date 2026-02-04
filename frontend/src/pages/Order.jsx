@@ -69,7 +69,10 @@ const Order = () => {
       }
     } catch (error) {
       console.error('Error submitting order:', error);
-      toast.error(error.response?.data?.detail || 'Failed to place order. Please try again.');
+      const errorMsg = language === 'hi' 
+        ? 'ऑर्डर करने में त्रुटि। कृपया पुनः प्रयास करें।'
+        : 'Failed to place order. Please try again.';
+      toast.error(error.response?.data?.detail || errorMsg);
     } finally {
       setIsSubmitting(false);
     }
