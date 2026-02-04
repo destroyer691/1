@@ -823,6 +823,12 @@ body {
 }
 
 /* ========== FORMS ========== */
+.order-form-section,
+.contact-form-section {
+  padding: 4rem 1.5rem;
+  background: linear-gradient(to bottom, #f8fdf6 0%, #eefbe5 100%);
+}
+
 .order-grid,
 .contact-grid {
   display: grid;
