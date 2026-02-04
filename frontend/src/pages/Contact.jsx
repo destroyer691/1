@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MessageSquare, User, MapPin } from 'lucide-react';
+import { Mail, Phone, MessageSquare, User, MapPin, Navigation } from 'lucide-react';
 import axios from 'axios';
 import { useLanguage } from '../LanguageContext';
 import { Button } from '../components/ui/button';
@@ -11,10 +11,11 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 // Company location
-const COMPANY_LOCATION = 'इंदौर, मध्य प्रदेश, भारत'; // Indore, Madhya Pradesh, India
+const COMPANY_ADDRESS = 'Indore, Madhya Pradesh, India';
+const GOOGLE_MAPS_DIRECTION_LINK = 'https://maps.app.goo.gl/8KAcwywnuY6m6T8C6';
 
 const Contact = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     mobile: '',
@@ -69,6 +70,10 @@ const Contact = () => {
     }
   };
 
+  const handleLocationClick = () => {
+    window.open(GOOGLE_MAPS_DIRECTION_LINK, '_blank');
+  };
+
   return (
     <div className="contact-page">
       {/* Hero Section */}
@@ -114,13 +119,26 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="contact-detail-item">
-                  <div className="contact-icon">
+                {/* Clickable Location with Directions */}
+                <div 
+                  className="contact-detail-item location-clickable"
+                  onClick={handleLocationClick}
+                  style={{cursor: 'pointer'}}
+                >
+                  <div className="contact-icon location-icon-animated">
                     <MapPin className="w-6 h-6" />
                   </div>
-                  <div>
-                    <h4 className="body-small" style={{fontWeight: 600, marginBottom: '0.25rem'}}>{t('location')}</h4>
-                    <p className="body-small" style={{color: 'var(--text-secondary)', margin: 0}}>{COMPANY_LOCATION}</p>
+                  <div style={{flex: 1}}>
+                    <h4 className="body-small" style={{fontWeight: 600, marginBottom: '0.25rem', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                      {t('location')}
+                      <Navigation className="w-4 h-4" style={{color: 'var(--accent-text)'}} />
+                    </h4>
+                    <p className="body-small location-text" style={{color: 'var(--accent-text)', margin: 0, fontWeight: 500}}>
+                      {COMPANY_ADDRESS}
+                    </p>
+                    <p className="caption" style={{margin: '0.25rem 0 0', color: 'var(--text-muted)', fontStyle: 'italic'}}>
+                      {language === 'hi' ? 'दिशा-निर्देश के लिए क्लिक करें' : 'Click for directions'}
+                    </p>
                   </div>
                 </div>
               </div>
