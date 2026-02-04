@@ -959,7 +959,8 @@ body {
 
 /* ========== ABOUT PAGE ========== */
 .company-story {
-  padding: 4rem 1.5rem;
+  padding: 5rem 1.5rem;
+  background: #ffffff;
 }
 
 .story-grid {
@@ -992,11 +993,20 @@ body {
 
 .vision-mission,
 .approach-section {
-  padding: 4rem 1.5rem;
+  padding: 5rem 1.5rem;
+}
+
+.vision-mission {
+  background: linear-gradient(135deg, #f8fdf6 0%, #eefbe5 100%);
+}
+
+.approach-section {
+  background: linear-gradient(to right, #e8f9dd 0%, #f0fae8 100%);
 }
 
 .why-section {
-  padding: 4rem 1.5rem;
+  padding: 5rem 1.5rem;
+  background: #ffffff;
 }
 
 .why-grid {
