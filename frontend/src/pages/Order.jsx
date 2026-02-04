@@ -9,9 +9,9 @@ import { toast } from 'sonner';
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
-const PRICE_PER_BAG = 599;
+const PRICE_PER_BAG = 500;
 const PRODUCT_NAME = 'Malva Organic Khad';
-const PRODUCT_QUANTITY = '50kg';
+const PRODUCT_QUANTITY = '40kg';
 
 const Order = () => {
   const [formData, setFormData] = useState({
