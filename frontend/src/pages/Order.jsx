@@ -143,14 +143,14 @@ const Order = () => {
                 <div className="form-group">
                   <label className="form-label">
                     <User className="w-4 h-4" />
-                    <span>Name *</span>
+                    <span>{t('name')} *</span>
                   </label>
                   <Input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Apna naam enter karein"
+                    placeholder={t('namePlaceholder')}
                     required
                     disabled={isSubmitting}
                   />
