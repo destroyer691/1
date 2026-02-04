@@ -1,12 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Sprout, Phone, Mail, MapPin } from 'lucide-react';
+import { Sprout, Phone, Mail, MapPin, Navigation } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 
-const COMPANY_LOCATION = 'इंदौर, मध्य प्रदेश'; // Indore, Madhya Pradesh
+const COMPANY_ADDRESS = 'Indore, Madhya Pradesh, India';
+const GOOGLE_MAPS_DIRECTION_LINK = 'https://maps.app.goo.gl/8KAcwywnuY6m6T8C6';
 
 const Footer = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  
+  const handleLocationClick = () => {
+    window.open(GOOGLE_MAPS_DIRECTION_LINK, '_blank');
+  };
   
   return (
     <footer className="footer">
@@ -46,9 +51,17 @@ const Footer = () => {
                 <Mail className="w-4 h-4" />
                 <a href="mailto:arvindpatidar110@gmail.com">arvindpatidar110@gmail.com</a>
               </li>
-              <li className="footer-contact-item">
+              <li 
+                className="footer-contact-item footer-location-clickable"
+                onClick={handleLocationClick}
+                style={{cursor: 'pointer'}}
+                title={language === 'hi' ? 'दिशा-निर्देश के लिए क्लिक करें' : 'Click for directions'}
+              >
                 <MapPin className="w-4 h-4" />
-                <span>{COMPANY_LOCATION}</span>
+                <span style={{display: 'flex', alignItems: 'center', gap: '0.35rem'}}>
+                  {COMPANY_ADDRESS}
+                  <Navigation className="w-3 h-3" style={{color: 'var(--accent-text)'}} />
+                </span>
               </li>
             </ul>
           </div>
