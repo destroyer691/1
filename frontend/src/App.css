@@ -964,8 +964,10 @@ body {
 .summary-product-image {
   width: 120px;
   height: 120px;
-  object-fit: cover;
+  object-fit: contain;
   border-radius: 8px;
+  background: var(--bg-section);
+  padding: 0.5rem;
 }
 
 .summary-detail {
