@@ -209,13 +209,13 @@ const Order = () => {
 
                 <div className="form-group">
                   <label className="form-label">
-                    <span>Additional Message (Optional)</span>
+                    <span>{t('additionalMsg')}</span>
                   </label>
                   <Textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Koi special instructions ya queries"
+                    placeholder={t('msgPlaceholder')}
                     rows={3}
                     disabled={isSubmitting}
                   />
