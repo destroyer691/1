@@ -705,10 +705,10 @@ body {
 
 /* ========== FOOTER ========== */
 .footer {
-  background: var(--bg-section);
-  border-top: 1px solid var(--border-light);
+  background: linear-gradient(to bottom, #e8f9dd 0%, #d4f4c4 100%);
+  border-top: 2px solid var(--accent-primary);
   padding: 3rem 1.5rem 2rem;
-  margin-top: 4rem;
+  margin-top: 0;
 }
 
 .footer-grid {
