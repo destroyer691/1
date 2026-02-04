@@ -138,7 +138,7 @@ const Order = () => {
 
             {/* Order Form */}
             <div className="order-form-card">
-              <h3 className="heading-3" style={{marginBottom: '1.5rem'}}>Apni Details Bharein</h3>
+              <h3 className="heading-3" style={{marginBottom: '1.5rem'}}>{t('yourDetails')}</h3>
               <form onSubmit={handleSubmit} className="order-form">
                 <div className="form-group">
                   <label className="form-label">
