@@ -102,8 +102,8 @@ const Order = () => {
               <h3 className="heading-3" style={{marginBottom: '1.5rem'}}>{t('productDetails')}</h3>
               <div className="product-summary-content">
                 <img 
-                  src="https://images.pexels.com/photos/5503338/pexels-photo-5503338.jpeg" 
-                  alt="Product"
+                  src="https://customer-assets.emergentagent.com/job_natural-khad/artifacts/1ruocoxd_WhatsApp%20Image%202026-02-04%20at%201.09.23%20PM.jpeg" 
+                  alt="Malva Organic Product"
                   className="summary-product-image"
                 />
                 <div>
