@@ -378,12 +378,21 @@ body {
 /* ========== SECTIONS ========== */
 .benefits-section,
 .reviews-section {
-  padding: 4rem 1.5rem;
+  padding: 5rem 1.5rem;
+  background: linear-gradient(135deg, #f8fdf6 0%, #eefbe5 100%);
 }
 
 .product-section,
 .cta-section {
-  padding: 4rem 1.5rem;
+  padding: 5rem 1.5rem;
+}
+
+.cta-section {
+  background: linear-gradient(135deg, #e8f9dd 0%, #d4f4c4 100%);
+}
+
+.product-section {
+  background: linear-gradient(to bottom, rgba(143, 236, 120, 0.08) 0%, rgba(143, 236, 120, 0.15) 100%) !important;
 }
 
 .container {
