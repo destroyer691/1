@@ -1349,7 +1349,8 @@ body {
   }
 
   .bag-image-wrapper {
-    height: 240px;
+    height: 300px;
+    padding: 0.75rem;
   }
 
   .bag-details h3 {
