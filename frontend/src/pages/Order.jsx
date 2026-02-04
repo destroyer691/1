@@ -13,6 +13,7 @@ const API = `${BACKEND_URL}/api`;
 const PRICE_PER_BAG = 500;
 
 const Order = () => {
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     mobile: '',
