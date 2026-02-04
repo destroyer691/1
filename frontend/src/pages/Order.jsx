@@ -177,13 +177,13 @@ const Order = () => {
                 <div className="form-group">
                   <label className="form-label">
                     <MapPin className="w-4 h-4" />
-                    <span>Delivery Address *</span>
+                    <span>{t('address')} *</span>
                   </label>
                   <Textarea
                     name="address"
                     value={formData.address}
                     onChange={handleChange}
-                    placeholder="Complete address with pincode"
+                    placeholder={t('addressPlaceholder')}
                     rows={3}
                     required
                     disabled={isSubmitting}
