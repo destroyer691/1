@@ -1124,52 +1124,368 @@ body {
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
+  /* Typography - Mobile */
+  .heading-1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .heading-2 {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+    line-height: 1.15;
+  }
+
+  .heading-3 {
+    font-size: clamp(1.25rem, 5vw, 1.5rem);
+  }
+
+  /* Navigation - Mobile */
+  .nav-container {
+    padding: 0.75rem 1rem;
+  }
+
+  .nav-logo-large {
+    gap: 0.5rem;
+  }
+
+  .nav-logo-large .w-8 {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .logo-text-large {
+    font-size: 1.25rem;
+  }
+
+  .logo-subtext {
+    font-size: 0.7rem;
+  }
+
+  .nav-links-desktop {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: block;
+  }
+
+  .mobile-menu {
+    display: block;
+    top: 65px;
+  }
+
+  /* Hero Section - Mobile */
   .hero-section {
-    padding: 6rem 1rem 3rem;
-    min-height: 80vh;
+    padding: 5rem 1rem 2.5rem;
+    min-height: 75vh;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-badge {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    margin-bottom: 1.25rem;
   }
 
   .hero-buttons {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .hero-image-grid {
+    max-width: 100%;
+    margin-top: 2rem;
+  }
+
+  .hero-main-image {
+    height: 200px;
   }
 
   .btn-primary,
   .btn-secondary {
     width: 100%;
+    min-height: 50px;
+    font-size: 1rem;
+    padding: 14px 20px;
   }
 
+  /* Sections - Mobile */
+  .benefits-section,
+  .reviews-section,
+  .product-section,
+  .cta-section,
+  .company-story,
+  .why-section,
+  .vision-mission,
+  .approach-section {
+    padding: 3rem 1rem;
+  }
+
+  .page-hero {
+    padding: 6rem 1rem 2.5rem;
+  }
+
+  /* Grid - Mobile */
   .ai-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
+  /* Product Showcase - Mobile */
   .product-showcase,
   .product-showcase-home,
   .story-grid,
   .why-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
+  }
+
+  .product-showcase-home {
+    max-width: 100%;
+  }
+
+  .product-bag-container {
+    max-width: 100%;
+  }
+
+  .product-bag-card {
+    padding: 1rem;
+  }
+
+  .bag-image-wrapper {
+    height: 240px;
+  }
+
+  .bag-details h3 {
+    font-size: 1.25rem;
+  }
+
+  .price-amount {
+    font-size: 2.5rem;
   }
 
   .product-showcase-image,
   .story-main-image,
   .why-main-image {
-    height: 250px;
+    height: 220px;
   }
 
-  .bag-image-wrapper {
-    height: 280px;
-  }
-
+  /* Forms - Mobile */
   .order-grid,
   .contact-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .product-summary-card,
+  .contact-info-card,
+  .order-form-card,
+  .contact-form-card {
+    padding: 1.25rem;
+  }
+
+  .summary-product-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .order-form,
+  .contact-form {
+    gap: 1rem;
+  }
+
+  .form-label {
+    font-size: 0.875rem;
+  }
+
+  /* Cards - Mobile */
+  .product-card {
+    padding: 1.25rem;
+  }
+
+  .benefit-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .benefit-icon svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  /* CTA Section - Mobile */
+  .cta-card {
+    padding: 2rem 1.25rem;
+  }
+
+  /* Footer - Mobile */
+  .footer {
+    padding: 2.5rem 1rem 1.5rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .footer-logo {
+    justify-content: center;
+  }
+
+  .footer-links,
+  .footer-contact {
+    align-items: center;
+  }
+
+  .footer-contact-item {
+    justify-content: center;
   }
 
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+    gap: 0.5rem;
+  }
+
+  /* WhatsApp Button - Mobile */
+  .whatsapp-button {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 55px;
+    height: 55px;
+  }
+
+  /* Contact Details - Mobile */
+  .contact-details {
+    gap: 1.25rem;
+  }
+
+  .contact-detail-item {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .contact-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .why-choose-box {
+    padding: 1.25rem;
+  }
+
+  /* Features List - Mobile */
+  .product-features-list {
+    gap: 0.625rem;
+  }
+
+  .feature-list-item {
+    padding: 0.625rem;
+    font-size: 0.875rem;
+  }
+
+  /* Review Cards - Mobile */
+  .review-card {
+    padding: 1.25rem;
+  }
+
+  .review-stars {
+    gap: 0.2rem;
+  }
+
+  .review-stars svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  /* Container - Mobile */
+  .container {
+    padding: 0 1rem;
+  }
+
+  /* About Page - Mobile */
+  .why-list {
+    gap: 0.75rem;
+  }
+
+  .why-item {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  /* Language Toggle - Mobile positioning */
+  .language-toggle {
+    display: none;
+  }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .heading-2 {
+    font-size: 1.5rem;
+  }
+
+  .logo-text-large {
+    font-size: 1.1rem;
+  }
+
+  .logo-subtext {
+    display: none;
+  }
+
+  .hero-badge {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+
+  .bag-image-wrapper {
+    height: 200px;
+  }
+
+  .price-amount {
+    font-size: 2rem;
+  }
+
+  .product-card {
+    padding: 1rem;
+  }
+
+  .whatsapp-button {
+    width: 50px;
+    height: 50px;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Tablet Landscape */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .product-showcase-home {
+    grid-template-columns: 350px 1fr;
+  }
+
+  .ai-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .order-grid,
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 
