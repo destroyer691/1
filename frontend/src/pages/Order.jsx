@@ -86,9 +86,9 @@ const Order = () => {
       <section className="page-hero">
         <div className="container">
           <ShoppingBag className="w-12 h-12" style={{color: 'var(--accent-text)', margin: '0 auto 1rem'}} />
-          <h1 className="heading-1">Order Karein</h1>
+          <h1 className="heading-1">{t('orderPageTitle')}</h1>
           <p className="hero-subtitle" style={{maxWidth: '600px', margin: '1.5rem auto 0'}}>
-            Apna order place karein - hum jaldi se aapko contact karenge
+            {t('orderPageSubtitle')}
           </p>
         </div>
       </section>
