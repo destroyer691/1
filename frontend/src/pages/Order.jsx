@@ -99,7 +99,7 @@ const Order = () => {
           <div className="order-grid">
             {/* Product Summary */}
             <div className="product-summary-card">
-              <h3 className="heading-3" style={{marginBottom: '1.5rem'}}>Product Details</h3>
+              <h3 className="heading-3" style={{marginBottom: '1.5rem'}}>{t('productDetails')}</h3>
               <div className="product-summary-content">
                 <img 
                   src="https://images.pexels.com/photos/5503338/pexels-photo-5503338.jpeg" 
