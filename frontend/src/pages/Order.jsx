@@ -107,14 +107,14 @@ const Order = () => {
                   className="summary-product-image"
                 />
                 <div>
-                  <h4 className="product-card-title">{PRODUCT_NAME}</h4>
+                  <h4 className="product-card-title">{t('productName')}</h4>
                   <div className="summary-detail">
                     <Package className="w-5 h-5" />
-                    <span>{PRODUCT_QUANTITY} Bag</span>
+                    <span>40kg {t('bags')}</span>
                   </div>
                   <div className="summary-detail">
                     <IndianRupee className="w-5 h-5" />
-                    <span>₹{PRICE_PER_BAG} per bag</span>
+                    <span>₹{PRICE_PER_BAG} {t('pricePerBag2')}</span>
                   </div>
                 </div>
               </div>
