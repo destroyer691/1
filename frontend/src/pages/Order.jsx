@@ -159,14 +159,14 @@ const Order = () => {
                 <div className="form-group">
                   <label className="form-label">
                     <Phone className="w-4 h-4" />
-                    <span>Mobile Number *</span>
+                    <span>{t('mobile')} *</span>
                   </label>
                   <Input
                     type="tel"
                     name="mobile"
                     value={formData.mobile}
                     onChange={handleChange}
-                    placeholder="10 digit mobile number"
+                    placeholder={t('mobilePlaceholder')}
                     maxLength={10}
                     pattern="[0-9]{10}"
                     required
