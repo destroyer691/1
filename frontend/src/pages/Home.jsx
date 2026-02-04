@@ -55,8 +55,8 @@ const Home = () => {
         </div>
         <div className="hero-image-grid">
           <img 
-            src="https://images.unsplash.com/photo-1529313780224-1a12b68bed16?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwyfHxvcmdhbmljJTIwZmFybWluZ3xlbnwwfHx8fDE3Njk0MjM0ODN8MA&ixlib=rb-4.1.0&q=85" 
-            alt="Organic farming" 
+            src="https://customer-assets.emergentagent.com/job_natural-khad/artifacts/aefzi2t6_WhatsApp%20Image%202026-02-04%20at%201.09.23%20PM%20%281%29.jpeg" 
+            alt="Natural organic compost with earthworms" 
             className="hero-main-image"
           />
         </div>
