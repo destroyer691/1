@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ShoppingBag, Package, IndianRupee, Phone, MapPin, User } from 'lucide-react';
 import axios from 'axios';
+import { useLanguage } from '../LanguageContext';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import { Textarea } from '../components/ui/textarea';
@@ -10,8 +11,6 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const PRICE_PER_BAG = 500;
-const PRODUCT_NAME = 'Malva Organic Khad';
-const PRODUCT_QUANTITY = '40kg';
 
 const Order = () => {
   const [formData, setFormData] = useState({
