@@ -73,12 +73,38 @@ const About = () => {
             </div>
             <div className="why-content">
               <ul className="why-list">
-                {aboutData.whyCowDung.map((reason, index) => (
-                  <li key={index} className="why-item">
-                    <Leaf className="w-6 h-6" style={{color: 'var(--accent-text)', flexShrink: 0}} />
-                    <span className="body-medium">{reason}</span>
-                  </li>
-                ))}
+                <li className="why-item">
+                  <Leaf className="w-6 h-6" style={{color: 'var(--accent-text)', flexShrink: 0}} />
+                  <span className="body-medium">{t('whyPoint1')}</span>
+                </li>
+                <li className="why-item">
+                  <Leaf className="w-6 h-6" style={{color: 'var(--accent-text)', flexShrink: 0}} />
+                  <span className="body-medium">{t('whyPoint2')}</span>
+                </li>
+                <li className="why-item">
+                  <Leaf className="w-6 h-6" style={{color: 'var(--accent-text)', flexShrink: 0}} />
+                  <span className="body-medium">{t('whyPoint3')}</span>
+                </li>
+                <li className="why-item">
+                  <Leaf className="w-6 h-6" style={{color: 'var(--accent-text)', flexShrink: 0}} />
+                  <span className="body-medium">{t('whyPoint4')}</span>
+                </li>
+                <li className="why-item">
+                  <Leaf className="w-6 h-6" style={{color: 'var(--accent-text)', flexShrink: 0}} />
+                  <span className="body-medium">{t('whyPoint5')}</span>
+                </li>
+                <li className="why-item">
+                  <Leaf className="w-6 h-6" style={{color: 'var(--accent-text)', flexShrink: 0}} />
+                  <span className="body-medium">{t('whyPoint6')}</span>
+                </li>
+                <li className="why-item">
+                  <Leaf className="w-6 h-6" style={{color: 'var(--accent-text)', flexShrink: 0}} />
+                  <span className="body-medium">{t('whyPoint7')}</span>
+                </li>
+                <li className="why-item">
+                  <Leaf className="w-6 h-6" style={{color: 'var(--accent-text)', flexShrink: 0}} />
+                  <span className="body-medium">{t('whyPoint8')}</span>
+                </li>
               </ul>
             </div>
           </div>
