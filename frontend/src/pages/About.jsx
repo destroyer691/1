@@ -3,14 +3,16 @@ import { Leaf, Heart, Target, Users } from 'lucide-react';
 import { useLanguage } from '../LanguageContext';
 
 const About = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="about-page">
       {/* Hero Section */}
       <section className="page-hero">
         <div className="container">
-          <h1 className="heading-1">Hamare Baare Mein</h1>
+          <h1 className="heading-1">{t('aboutTitle')}</h1>
           <p className="hero-subtitle" style={{maxWidth: '800px', margin: '1.5rem auto 0'}}>
-            Malva Organic - Prakriti ke saath, kisano ke saath
+            {t('aboutSubtitle')}
           </p>
         </div>
       </section>
