@@ -62,7 +62,7 @@ const About = () => {
       {/* Why Cow Dung Fertilizer */}
       <section className="why-section">
         <div className="container">
-          <h2 className="heading-2 text-center" style={{marginBottom: '3rem'}}>Kyun Gae Ke Gobar Se Bana Khad?</h2>
+          <h2 className="heading-2 text-center" style={{marginBottom: '3rem'}}>{t('whyCowDung')}</h2>
           <div className="why-grid">
             <div className="why-image">
               <img 
