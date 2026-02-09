@@ -47,13 +47,13 @@ const About = () => {
           <div className="ai-grid" style={{gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))'}}>
             <div className="product-card">
               <Target className="w-10 h-10" style={{color: 'var(--accent-text)', marginBottom: '1rem'}} />
-              <h3 className="product-card-title">Hamara Vision</h3>
-              <p className="product-card-description">{aboutData.vision}</p>
+              <h3 className="product-card-title">{t('ourVision')}</h3>
+              <p className="product-card-description">{t('visionText')}</p>
             </div>
             <div className="product-card">
               <Heart className="w-10 h-10" style={{color: 'var(--accent-text)', marginBottom: '1rem'}} />
-              <h3 className="product-card-title">Hamara Mission</h3>
-              <p className="product-card-description">{aboutData.mission}</p>
+              <h3 className="product-card-title">{t('ourMission')}</h3>
+              <p className="product-card-description">{t('missionText')}</p>
             </div>
           </div>
         </div>
