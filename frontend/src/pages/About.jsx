@@ -114,22 +114,22 @@ const About = () => {
       {/* Our Approach */}
       <section className="approach-section" style={{background: 'var(--bg-section)', padding: '4rem 0'}}>
         <div className="container">
-          <h2 className="heading-2 text-center" style={{marginBottom: '3rem'}}>Hamara Approach</h2>
+          <h2 className="heading-2 text-center" style={{marginBottom: '3rem'}}>{t('ourApproach')}</h2>
           <div className="ai-grid">
             <div className="product-card">
               <Leaf className="w-10 h-10" style={{color: 'var(--accent-text)', marginBottom: '1rem'}} />
-              <h3 className="product-card-title">Eco-Friendly</h3>
-              <p className="product-card-description">100% natural process, zero chemicals, zero pollution - prakriti ke liye safe</p>
+              <h3 className="product-card-title">{t('ecoFriendly')}</h3>
+              <p className="product-card-description">{t('ecoDesc')}</p>
             </div>
             <div className="product-card">
               <Heart className="w-10 h-10" style={{color: 'var(--accent-text)', marginBottom: '1rem'}} />
-              <h3 className="product-card-title">Soil-Friendly</h3>
-              <p className="product-card-description">Mitti ki natural fertility badhata hai, structure improve karta hai</p>
+              <h3 className="product-card-title">{t('soilFriendly')}</h3>
+              <p className="product-card-description">{t('soilDesc')}</p>
             </div>
             <div className="product-card">
               <Users className="w-10 h-10" style={{color: 'var(--accent-text)', marginBottom: '1rem'}} />
-              <h3 className="product-card-title">Farmer-Friendly</h3>
-              <p className="product-card-description">Affordable price, better yield, long-term soil health - kisano ke liye profitable</p>
+              <h3 className="product-card-title">{t('farmerFriendly')}</h3>
+              <p className="product-card-description">{t('farmerDesc')}</p>
             </div>
           </div>
         </div>
