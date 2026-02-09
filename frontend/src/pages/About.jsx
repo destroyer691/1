@@ -29,14 +29,12 @@ const About = () => {
               />
             </div>
             <div className="story-content">
-              <h2 className="heading-2">Malva Organic Ki Kahaani</h2>
+              <h2 className="heading-2">{t('storyTitle')}</h2>
               <p className="body-large" style={{margin: '1.5rem 0'}}>
-                {aboutData.story}
+                {t('storyText')}
               </p>
               <p className="body-medium" style={{color: 'var(--text-secondary)'}}>
-                Hum vishwaas karte hain ki prakriti ke paas har samasya ka samadhan hai. 
-                Gae ka gobar ek aisa prakritik resource hai jo mitti ko life deta hai, 
-                fasalon ko healthy banata hai aur kisano ko chemical ke nuksan se bachata hai.
+                {t('storyText2')}
               </p>
             </div>
           </div>
